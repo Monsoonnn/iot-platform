@@ -19,21 +19,14 @@ const headerStyle = {
   alignItems: "center",
   justifyContent: "center",
 };
-const Dumpdata = [
-  { time: "10:05", temp: 25, humidity: 60, light: 300 },
-  { time: "10:10", temp: 26, humidity: 62, light: 310 },
-  { time: "10:15", temp: 27, humidity: 64, light: 320 },
-  { time: "11:00", temp: 30, humidity: 70, light: 320 },
-  { time: "12:00", temp: 25, humidity: 80, light: 340 },
-  { time: "13:00", temp: 38, humidity: 50, light: 360 },
-  { time: "14:00", temp: 28, humidity: 60, light: 380 },
-];
+
 const Dashboard = () => {
 
   const [temperature, setTemperature] = useState(30);
   const [humidity, setHumidity] = useState(65);
   const [light, setLight] = useState(350);
 
+  //Fake data cập nhật theo thời gian
   useEffect(() => {
     const interval = setInterval(() => {
       setTemperature((prev) => Math.max(20, Math.min(40, prev + (Math.random() * 4 - 2))));
@@ -42,7 +35,6 @@ const Dashboard = () => {
     }, 20000);
     return () => clearInterval(interval);
   }, []);
-
 
   return (
     <Layout>
@@ -79,7 +71,7 @@ const Dashboard = () => {
         <Row gutter={16} style={{ marginTop: "20px" }}>
           {/* Biểu đồ*/}
           <Col span={18}>
-            <DashBoardChart data={Dumpdata} />
+            <DashBoardChart />
           </Col>
 
           {/* Nút bật/tắt */}

@@ -4,11 +4,11 @@ import { Gauge } from "@ant-design/plots";
 const getThresholds = (type) => {
   switch (type) {
     case "temperature":
-      return [20, 40, 60]; // Nhiệt độ 0-60 chia 3 mức
+      return [20, 40, 60]; // Nhiệt độ 0-60 
     case "humidity":
-      return [30, 60, 100]; // Độ ẩm 0-100 chia 3 mức
+      return [30, 60, 100]; // Độ ẩm 0-100 
     case "light":
-      return [200, 400, 600]; // Độ sáng 0-800 chia 3 mức
+      return [200, 400, 600]; // Độ sáng 0-800 
     default:
       return [100, 200, 400];
   }

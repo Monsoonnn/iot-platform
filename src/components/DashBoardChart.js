@@ -1,30 +1,39 @@
-import { Layout, Card, Row, Col, Button } from "antd";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { Card } from "antd";
+import { Line } from "@ant-design/plots";
 
+const Dumpdata = [
+  { time: "10:05", temp: 25, humidity: 60, light: 300 },
+  { time: "10:10", temp: 26, humidity: 62, light: 310 },
+  { time: "10:15", temp: 27, humidity: 64, light: 320 },
+  { time: "11:00", temp: 30, humidity: 70, light: 320 },
+  { time: "12:00", temp: 25, humidity: 80, light: 340 },
+  { time: "13:00", temp: 38, humidity: 50, light: 360 },
+  { time: "14:00", temp: 28, humidity: 60, light: 380 },
+];
 
-const DashBoardChart = (props) => {
+const DashBoardChart = () => {
+    
+    const transformedData = Dumpdata.flatMap(item => [
+        { time: item.time, value: item.temp, type: "Nhiệt độ (°C)"},
+        { time: item.time, value: item.humidity, type: "Độ ẩm (%)"},
+        { time: item.time, value: item.light, type: "Ánh sáng (Lux)"},
+    ]);
 
-    let { data } = props
+    const config = {
+        data: transformedData,
+        xField: "time",
+        yField: "value",
+        seriesField: "type",
+        smooth: true,
+        height: 480,
+        colorField: 'type',
+      };
 
     return (
         <Card title="Biểu đồ cảm biến">
-            <ResponsiveContainer width="100%" height={500}>
-                <LineChart data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis
-                        dataKey="time"
-                    />
-                    <YAxis />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="temp" stroke="#ff7300" name="Nhiệt độ (°C)" />
-                    <Line type="monotone" dataKey="humidity" stroke="#387908" name="Độ ẩm (%)" />
-                    <Line type="monotone" dataKey="light" stroke="#8884d8" name="Ánh sáng (Lux)" />
-                </LineChart>
-            </ResponsiveContainer>
+            <Line {...config} />
         </Card>
     );
-
-
-}
+};
 
 export default DashBoardChart;
