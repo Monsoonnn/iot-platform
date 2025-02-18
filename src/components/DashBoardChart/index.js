@@ -25,7 +25,7 @@ const DashBoardChart = () => {
         yField: "value",
         seriesField: "type",
         smooth: true,
-        height: 480,
+        height: 410,
         colorField: 'type',
       };
 

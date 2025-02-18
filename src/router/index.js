@@ -3,7 +3,7 @@ import Dashboard from "../pages/Dashboard";
 import History from "../pages/History";
 import Sensors from "../pages/Sensors";
 import Profile from "../pages/Profile";
-import MainLayout from "../layouts/Mainlayout";
+import MainLayout from "../layouts/MainLayout";
 
 const AppRouter = () => {
   return (

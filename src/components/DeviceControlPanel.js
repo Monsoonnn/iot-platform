@@ -21,7 +21,7 @@ const DeviceControlPanel = () => {
     };
 
     return (
-        <Card title="Điều khiển thiết bị">
+        <Card title="Điều khiển thiết bị" bordered style={{maxHeight: "520px"}}>
             <ToggleDeviceButton
                 deviceName="Quạt"
                 image={fanImg}

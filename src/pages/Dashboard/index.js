@@ -1,24 +1,16 @@
 import { Layout, Row, Col } from "antd";
 import { Gauge } from "@ant-design/plots";
 import { useState, useEffect } from "react";
-import DashBoardChart from "../components/DashBoardChart";
-import DeviceControlPanel from "../components/DeviceControlPanel";
-import InfoCard from "../components/InfoCard";
-
-
+import DashBoardChart from "../../components/DashBoardChart";
+import DeviceControlPanel from "../../components/DeviceControlPanel";
+import InfoCard from "../../components/InfoCard";
+import humidityImg from "../../assets/images/humidity.png";
+import lightImg from "../../assets/images/light.png";
+import temperatureImg from "../../assets/images/temperate_high.png";
+import DashboardHeader from "../../components/Header";
+import { max } from "@antv/util";
 const { Header, Content } = Layout;
 
-const headerStyle = {
-  color: "#000",
-  backgroundColor: "#fff",
-  padding: "10px",
-  fontSize: "24px",
-  fontWeight: "bold",
-  textAlign: "center",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-};
 
 const Dashboard = () => {
 
@@ -38,8 +30,6 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <Header style={headerStyle}>Bảng Điều Khiển</Header>
-
       <Content style={{ padding: "20px" }}>
          {/* Thông tin Nhiệt độ, Độ ẩm, Ánh sáng */}
         <Row gutter={16}>
@@ -47,6 +37,7 @@ const Dashboard = () => {
           <Col span={8}>
             <InfoCard 
               title="Nhiệt độ" 
+              image={temperatureImg}
               value={`${temperature.toFixed(1)}`}
               type="temperature" 
 
@@ -55,6 +46,7 @@ const Dashboard = () => {
           <Col span={8}>
             <InfoCard 
               title="Độ ẩm" 
+              image={humidityImg}
               value={`${humidity.toFixed(1)}`} 
               type="humidity"  
             />
@@ -62,6 +54,7 @@ const Dashboard = () => {
           <Col span={8}>
             <InfoCard 
               title="Ánh sáng" 
+              image={lightImg}
               value={`${light.toFixed(1)}`} 
               type="light" 
             />

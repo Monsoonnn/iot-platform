@@ -7,7 +7,7 @@ const ToggleDeviceButton = ({ image, deviceName, deviceState, toggleDevice }) =>
 
     return (
         <>
-            <Card style={{ marginBottom: "20px" }}>
+            <Card style={{ marginBottom: "20px",  maxHeight : "120px"}} >
                 <div>
                     {buttonText}
                 </div>
